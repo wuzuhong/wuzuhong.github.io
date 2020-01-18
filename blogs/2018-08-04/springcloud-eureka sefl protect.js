@@ -1,0 +1,3 @@
+function getBlog(){
+	return blog = {"content": "# 【微服务—springcloud】Eureka的自我保护机制\n默认情况下，如果Eureka Server在一定时间内（默认为90秒）没有接收到某个微服务实例的心跳，Eureka Server将会注销该实例。但是当网络故障，导致微服务与Eureka Server无法正常通信，此时不应该注销该微服务，因为微服务本身其实健康的。\n\nEureka通过自我保护机制来解决这个问题\n\n当Eureka Server节点在短时间内丢失过多客户端时，那么这个节点就会进入自我保护模式，一旦进入该模式，Eureka Server就会保护服务注册表中的信息，不再删除服务注册表中的数据（也就是不会注销任何微服务），当通信正常后，该Eureka Server节点自动会退出自我保护模式。\n\n在自我保护模式中，Eureka Server会保护服务注册表中的信息，不再注销任何服务实例。当它接收到的心跳数重新恢复到阈值以上时，该Eureka Server节点就会自动退出自我保护模式。\n\n综上，自我保护模式是一种应对网络异常的安全保护措施，它的设计哲学是宁可保留错误的服务注册信息，也不盲目注销任何可能健康的服务实例。使用自我保护机制，可以让Eureka集群更加的健壮、稳定。\n\n在SpringCloud中也可以使用eureka.server.enable-self-preservation=false来禁用自我保护模式，但不推荐禁用。", "title": "【微服务—springcloud】Eureka的自我保护机制"}
+}

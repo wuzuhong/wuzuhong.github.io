@@ -1,0 +1,15 @@
+# 【React Native】如何搭建ReactNative开发环境？
+React Native 中文官方文档已经对搭建开发环境进行了详细的说明，值得参考 https://reactnative.cn/docs/getting-started/
+
+但是跟着 React Native 中文官方文档一步一步安装完成并成功创建新项目后，也遇到了一些问题
+
+## 1、在执行命令`react-native run-android`时出现`Downloading https://services.gradle.org/distributions/gradle-2.4-all.zip`错误
+* 问题定位：资源在墙外，下载不下来。  
+* 解决方法：删掉原工程，新建一个工程，然后手动下载gradle-2.4-all.zip（直接百度即可），放在C:\Users\Administrator.gradle\wrapper\dists\gradle-2.14.1-all\8bnwg5hd3w55iofp58khbp6yv 目录下，然后再重新执行
+`react-native run-android`命令。
+
+## 2、在执行命令`react-native run-android`时出现` No connected devices!`错误
+* 问题定位：没有可用的安卓设备
+* 解决方法
+  * 使用安卓模拟器：安装Genymotion模拟器，选择并下载虚拟安卓设备，如果虚拟安卓设备下载不下来，则点击取消下载，然后找到C:\Users\Administrator\AppData\Local\Genymobile，打开当前路径下 genymotion.log 文件，查看最下面的下载日志，复制下载连接，使用迅雷下载，然后把下载好的文件放到 C:\Users\Administrator\AppData\Local\Genymobile\Genymotion\ova 文件夹下，然后再去Genymotion上下载刚刚选择的虚拟设备，这时它就不会再下载了，只会自动安装。然后去Genymotion中配置android sdk 为自己安装的而不是默认的，再去android studio 中配置Genymotion。然后在Genymotion上启动该虚拟安卓设备，再进入项目目录，执行命令`react-native run-android`命令，之后react native就可以在安卓虚拟机上运行起来了。
+  * 使用安卓真机：跟着文档来 https://reactnative.cn/docs/running-on-device/ 除了要开启USB调试，还要开启USB安装，还要开启开发者模式，还要在手机上开启当前应用的显示悬浮窗权限。还要摇一摇手机，选择Dev Settings，再选择Debug server host & port for device，输入：电脑 ip + 端口（固定为8081）（需要让手机和电脑连在同一个局域网中）（android5以下版本才需要这一步设置，android5以下版本只能通过wifi连接，android5及以上则可以直接通过USB连接，不需要设置ip端口，也不需要在同一个局域网了）。都设置完后返回空白界面，再摇一摇手机，选择Reload JS，这样程序就运行起来了！在真机上运行起来后，就可以将usb线拔掉了。再摇一摇手机，选择Enable Live Reload，之后每次在电脑上保存js后手机上都会自动刷新。

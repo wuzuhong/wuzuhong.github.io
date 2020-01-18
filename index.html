@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>站在风口哈气</title>
+  <link href="./libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="./images/favicon.png">
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <image class="navbar-brand" src="./images/favicon.png">
+          <span class="navbar-brand" style="font-weight:bold;font-size:20px">站在风口哈气</a>
+            <span style="margin-left:200px"></span>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-form navbar-left">
+          <div class="form-group">
+            <input id="searchInput" type="text" class="form-control" placeholder="搜索文章……">
+          </div>
+          <button type="button" class="btn btn-default" onclick="searchClick()">搜索</button>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://github.com/wuzuhong" target="_blank"><img src="./images/github.png" title="GitHub"></a></li>
+          <li><a href="https://blog.csdn.net/abc286229825" target="_blank"><img src="./images/csdn.png" title="CSDN"></a></li>
+          <li><a href="https://www.zhihu.com/people/chen-nian-qing-33-33/activities" target="_blank"><img src="./images/zhihu.png" title="知乎"></a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="row" style="margin-top:60px;">
+    <div class="col-md-6 col-md-offset-2">
+      <div id="blogs" class="list-group">
+      </div>
+      <!-- <nav>
+        <ul class="pager">
+          <li><a href="#">上一页</a></li>
+          &nbsp;&nbsp;第&nbsp;&nbsp;<font>1</font>&nbsp;&nbsp;页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共&nbsp;&nbsp;<font>1
+          </font>&nbsp;&nbsp;页&nbsp;&nbsp;
+          <li><a href="#">下一页</a></li>
+        </ul>
+      </nav> -->
+    </div>
+    <div class="col-md-3">
+      <div style="border-left:5px solid #e32c28;margin-bottom: 10px;margin-top: 25px">
+        <h4 style="margin-left: 10px">分类标签</h4>
+      </div>
+      <div id="tags">
+        <button type="button" class="btn btn-primary btn-sm" onclick="searchBlogByTag($(this))" style="margin-top:5px;margin-left:5px" title="全部分类">全部分类</button>
+      </div>
+      <div style="margin-top:60px">Copyright&nbsp;©&nbsp;2019&nbsp;&nbsp;吴祖洪</div>
+      <div style="margin-top:10px">联系我&nbsp;：286229825@qq.com</div>
+    </div>
+  </div>
+
+  <script src="./libs/jquery-3.2.1.min.js"></script>
+  <script src="./libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="./scripts/data.js"></script>
+  <script src="./scripts/index.js"></script>
+  <script>
+    $(function () {
+      insertBlogTags()
+      insertBlogTitles()
+      $("#searchInput").keypress(function (e) {
+        if (e.which == 13) {
+          searchClick();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

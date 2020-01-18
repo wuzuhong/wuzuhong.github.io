@@ -1,0 +1,135 @@
+# 【kubernetes】权限认证
+* kubernetes上的所有操作除了使用 kubectl 之外，kubernetes还提供了一系列restful风格的接口来操作资源，这些接口类似于：/api/apps/v1/namespaces/default/deployment/myapp-deploy，v1表示当前资源所属的apiVersion，namespaces表示名称空间，default表示名称空间的名字，deployment表示资源类型，app-deploy表示资源名字，所有名称空间内的资源都需要指定名称空间；在kubernetes中，资源有两种级别，一种是集群级别，另一种是namespace级别。
+
+* 当用户使用restful接口来操作时，就需要进行权限认证了。
+
+* 当用户的一个操作请求发送至kubernetes的apiserver中时，apiserver需要用以下三步来进行权限认证：认证（用于身份识别） --> 授权（用于权限检查） --> 准入控制（进一步补充授权），只有当这三步都通过时，apiserver才会执行该操作；这三步都是由一系列插件进行控制，当某一步中的某一个插件通过了，那么这一步就算是通过了，当某一步中的某一个插件没有通过，则会尝试这一步中的其他插件。
+
+* 在kubernetes上，一个用户拥有三种信息：
+user（用户账号）：username，uid；group（用户组）；extra（额外信息）。
+
+* 在kubernetes中有两类认证账号，一类叫做 useraccount（用户账号）对应于现实中的人使用的账号；第二类叫serviceaccount（服务账号），用于在pod中运行的程序想访问apiserver时使用的认证信息。
+
+* 需要与apiserver打交道的有两类：1、集群外的用户客户端，他们使用apiserver所在的节点地址和apiserver所监听的端口发起请求并使用useraccount进行认证，useraccount是集群外的账号，不需要手动在集群内创建；
+2、集群内的pod客户端，他们使用service网络进行交互并使用serviceaccount进行认证。
+
+* serviceaccount也是kubernetes中有一种资源
+
+可以通过
+```
+kubectl create serviceaccount admin -o yaml --dry-run > ./mysa.yaml
+```
+来查看serviceacount的创建模板并输出到指定目录的文件中，然后就可以在这个文件的基础上进行修改，极大的简化了yaml文件的定义（只要支持create的资源，都可以使用这钟方式来简化操作。
+
+可以通过
+```
+kubectl create serviceaccount admin
+```
+来创建一个 serviceaccount，然后在创建pod的时候可以去加载这个自定义的serviceaccount。
+
+可以通过
+```
+kubectl get sa
+```
+来查看当前已创建好的serviceaccount；在创建pod时去加载这个自定义的serviceaccount时需要在spec下新增一个字段serviceAccountName: admin
+
+* kubeconfig是客户端在使用kubect时连入apiserver时使用的认证配置文件
+
+可以使用
+```
+kubectl config view
+```
+来查看其默认定义的内容：
+```
+apiVersion: v1
+#用户账号列表
+users:
+  #用户账号名称
+- name: kubernetes-admin
+  user:
+    #客户端证书
+    client-certificate-data: REDACTED
+    #客户端私钥
+    client-key-data: REDACTED
+#集群列表
+clusters:
+- cluster:
+    #认证数据
+    certificate-authority-data: DATA+OMITTED
+    #访问apiserver的路径
+    server: https://192.168.56.101:6443
+  #集群的名称
+  name: kubernetes
+#用于指定集群和用户账号的对应的关系，也就是指明用哪个用户账号去访问哪个集群
+contexts:
+- context:
+    cluster: kubernetes
+    user: kubernetes-admin
+  name: kubernetes-admin@kubernetes
+#当前使用的context
+current-context: kubernetes-admin@kubernetes
+kind: Config
+preferences: {}
+```
+若想对其中默认的内容进行扩展，可使用
+```
+kubectl config set-xxx
+```
+来进行自定义集群和用户账号。
+
+* 在创建好账号后，还需要为这个账号授权，这里使用RABC进行授权，授权也分集群级别和namespace级别
+
+![权限认证](./images/kubernetes-authorization.jpg)
+
+Role、RoleBinding和ClusterRole、ClusterRoleBinding都是属于kubernetes上的资源，User可以是serviceaccount或useraccount或group；当使用RoleBinding去绑定ClusterRole时，这个ClusterRole就拥有了当前名称空间上的管理权限；
+
+通过
+```
+kubectl create role pods-role --verb=get,list,watch --resource=pods
+```
+来创建一个角色，这个角色名称为 pod-role，可进行的操作为 get,list,watch，可操作的资源为pod。
+
+也可以通过yaml文件来定义role：
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: pods-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+```
+然后用 kubectl apply -f 来创建即可。
+
+通过
+```
+kubectl create rolebinding admin-read-pods --role=pods-role --user=admin
+```
+来创建一个useraccount的角色绑定，名称为 admin-read-pods，绑定的角色为 pods-role，绑定的useraccount 为 admin，其中的 useraccount 是集群外部账号，不需要手动创建。
+
+也可以通过yaml文件来定义rolebinding：
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: admin-read-pods
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pods-role
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: admin
+```
+然后用 kubectl apply -f 来创建即可。
+
+ClusterRole、ClusterRoleBinding 和 Role、RoleBinding 的创建方式相似。
