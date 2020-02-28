@@ -110,6 +110,7 @@ function getAllBlogs(){
 		{"tag": "【分布式配置中心—Apollo】", "title": "【分布式配置中心—Apollo】动态修改应用配置的几种方式", "path": "./blogs/2019-11-23/how to change configuration automatically.js"},
 		{"tag": "【分布式配置中心—Apollo】", "title": "【分布式配置中心—Apollo】Java客户端使用方式", "path": "./blogs/2019-11-23/usage of java client.js"},
 		{"tag": "【spring】", "title": "【spring】Spring的两大特性： aop 和 ioc", "path": "./blogs/2020-01-07/AOP and IOC.js"},
-		{"tag": "【spring】", "title": "【spring】Spring启动过程", "path": "./blogs/2020-01-08/spring startup process.js"}
+		{"tag": "【spring】", "title": "【spring】Spring启动过程", "path": "./blogs/2020-01-08/spring startup process.js"},
+		{"tag": "【java】", "title": "【java】Java注解", "path": "./blogs/2020-02-28/java annotation.js"}
 	]
 }
