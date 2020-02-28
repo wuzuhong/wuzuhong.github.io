@@ -319,3 +319,5 @@ public class PersonBuilder {
     }
 }
 ```
+
+**注意**：就算把保留策略更改为`RetentionPolicy.CLASS`或`RetentionPolicy.RUNTIME`，以上的注解处理器也能起作用，这是因为`RetentionPolicy.CLASS`或`RetentionPolicy.RUNTIME`会保留的注解，同样也会在`RetentionPolicy.SOURCE`中保留。
