@@ -44,7 +44,7 @@ public @interface AnnotationDemo {
 添加了@Inherited注解的类，其子类也将拥有这个注解
 
 #### @Repeatable
-表示注解是可重复使用的，也就是可以多次应用于相同的声明或类型，示例：
+表示注解是可重复使用的，也就是可以多次应用于相同的声明或类型，也就是让同一个注解可以重复在同一类/方法/属性上使用，示例：
 ```java
 // Schedule.java
 // 重复注解类
@@ -129,7 +129,7 @@ public class RepetableAnnotationTest{
         </configuration>
     </plugin>
     ```
-    值得注意的是，以上方式生效的前提是club.throwable.processor.AnnotationProcessor已经被编译过，否则编译的时候就会报错。解决方法有两种，第一种是提前使用命令或者IDEA右键club.throwable.processor.AnnotationProcessor对它进行编译；第二种是把club.throwable.processor.AnnotationProcessor放到一个独立的Jar包引入。**推荐使用第二种方式解决**。
+    值得注意的是，以上方式生效的前提是club.throwable.processor.AnnotationProcessor已经被编译过，否则编译的时候就会报错。解决方法有两种，第一种是提前使用命令或者IDEA右键club.throwable.processor.AnnotationProcessor对它进行编译；第二种是把club.throwable.processor.AnnotationProcessor放到一个独立的Jar包引入；**推荐使用第二种方式解决**。
 
 #### 使用示例
 下面是一个直接修改类代码的例子，为实体类的Setter方法对应的属性生成一个Builder类，也就是原来的类如下：
