@@ -16,7 +16,7 @@
 JedisPoolConfig poolConfig = new JedisPoolConfig();
 // 创建连接池
 JedisPool jedisPool = new JedisPool(poolConfig, "127.0.0.1", 6379);
-// 因为Jedis对象实现了Closeable接口，所以jedis实例会在try代码块执行完成后自动关闭
+// 因为Jedis对象实现了Closeable接口，所以jedis实例会在try代码块执行完成后自动关闭。这个将try-with-resource语法，是Java7引入的
 try (Jedis jedis = jedisPool.getResource()) {
   jedis.set("xxKey", "xxValue");
   // 调用更多的函数，都是和redis的命令对应的，所以可以通过查看redis的命令说明来了解这些函数的意义：http://www.redis.cn/commands.html
