@@ -62,6 +62,15 @@ function getAllBlogs(){
 		{"tag": "【微服务—kong】", "title": "【微服务—kong】kong集群", "path": "./blogs/2019-01-05/kong-cluster.js"},
 		{"tag": "【微服务—kong】", "title": "【微服务—kong】自定义插件", "path": "./blogs/2019-01-05/kong-plugin.js"},
 		{"tag": "【微服务—kong】", "title": "【微服务—kong】在使用kong时遇到的问题", "path": "./blogs/2019-01-06/kong-bugfix.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】客户端使用方式", "path": "./blogs/2019-02-05/redis client.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】常用命令", "path": "./blogs/2019-02-05/redis common cmd.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】简介及其数据类型", "path": "./blogs/2019-02-05/redis data type.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】管道", "path": "./blogs/2019-02-06/redis pipeline.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】发布/订阅", "path": "./blogs/2019-02-06/redis publish and subscript.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】事务和脚本", "path": "./blogs/2019-02-06/redis transaction and script.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】持久化", "path": "./blogs/2019-02-07/redis persistence.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】分布式锁", "path": "./blogs/2019-02-08/redis distributed lock.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】高可用", "path": "./blogs/2019-02-08/redis high avaliability.js"},
 		{"tag": "【消息中间件—rabbitmq】", "title": "【消息中间件—rabbitmq】HelloWorld", "path": "./blogs/2019-03-01/rabbitmq-1helloworld.js"},
 		{"tag": "【消息中间件—rabbitmq】", "title": "【消息中间件—rabbitmq】工作队列", "path": "./blogs/2019-03-01/rabbitmq-2workqueue.js"},
 		{"tag": "【消息中间件—rabbitmq】", "title": "【消息中间件—rabbitmq】发布和订阅", "path": "./blogs/2019-03-01/rabbitmq-3publish-subscribe.js"},
@@ -111,6 +120,8 @@ function getAllBlogs(){
 		{"tag": "【分布式配置中心—Apollo】", "title": "【分布式配置中心—Apollo】Java客户端使用方式", "path": "./blogs/2019-11-23/usage of java client.js"},
 		{"tag": "【spring】", "title": "【spring】Spring的两大特性： aop 和 ioc", "path": "./blogs/2020-01-07/AOP and IOC.js"},
 		{"tag": "【spring】", "title": "【spring】Spring启动过程", "path": "./blogs/2020-01-08/spring startup process.js"},
-		{"tag": "【java】", "title": "【java】Java注解", "path": "./blogs/2020-02-28/java annotation.js"}
+		{"tag": "【java】", "title": "【java】Java注解", "path": "./blogs/2020-02-28/java annotation.js"},
+		{"tag": "【spring】", "title": "【spring】使用Spring来加载工程下所有jar包下的指定资源", "path": "./blogs/2020-03-16/get all classpath resources.js"},
+		{"tag": "【java并发编程】", "title": "【java并发编程】Stream流", "path": "./blogs/2020-03-16/stream.js"}
 	]
 }
