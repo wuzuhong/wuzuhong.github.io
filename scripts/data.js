@@ -122,6 +122,7 @@ function getAllBlogs(){
 		{"tag": "【spring】", "title": "【spring】Spring启动过程", "path": "./blogs/2020-01-08/spring startup process.js"},
 		{"tag": "【java】", "title": "【java】Java注解", "path": "./blogs/2020-02-28/java annotation.js"},
 		{"tag": "【spring】", "title": "【spring】使用Spring来加载工程下所有jar包下的指定资源", "path": "./blogs/2020-03-16/get all classpath resources.js"},
-		{"tag": "【java并发编程】", "title": "【java并发编程】Stream流", "path": "./blogs/2020-03-16/stream.js"}
+		{"tag": "【java并发编程】", "title": "【java并发编程】Stream流", "path": "./blogs/2020-03-16/stream.js"},
+		{"tag": "【springboot】", "title": "【springboot】SpringBoot底层原理", "path": "./blogs/2020-03-30/springboot startup.js"}
 	]
 }
