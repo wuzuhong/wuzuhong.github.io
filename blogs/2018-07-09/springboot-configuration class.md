@@ -30,3 +30,25 @@ public class WebMvcConfig {
   }
 }
 ```
+
+当然也支持使用`@ImportResource`注解来加载xml文件配置。其支持通配符，例如：`@ImportResource("classpath*:aabb/*-ccdd.xml")`。也支持自定义xml文件读取逻辑，只需要自定义一个`BeanDefinitionReader`的实现类，然后这样使用`@ImportResource(locations="classpath*:aabb/*-ccdd.xml", reader=MyXmlBeanDefinitionReader)`，最后实现这个`MyXmlBeanDefinitionReader`类：
+```java
+public class MyXmlBeanDefinitionReader extends XmlBeanDefinitionReader {
+
+	public MyXmlBeanDefinitionReader(BeanDefinitionRegistry registry) {
+		super(registry);
+		
+        // 自定义逻辑
+	}
+
+	@Override
+	public int loadBeanDefinitions(Resource resource) throws BeanDefinitionStoreException {
+		// 自定义逻辑
+        // 入参 Resource 对象代表 xml 文件
+        // 返回值为当前 xml 文件中 bean 的数量，若不想让当前 xml 文件生效，则可以返回 0
+        
+		return super.loadBeanDefinitions(resource);
+	}
+
+}
+```
