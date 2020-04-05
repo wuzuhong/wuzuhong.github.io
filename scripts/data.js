@@ -12,6 +12,7 @@ function getAllBlogs(){
 		{"tag": "【mysql】", "title": "【mysql】乐观锁和悲观锁", "path": "./blogs/2017-05-03/mysql-Pessimistic Lock and Optimistic Lock.js"},
 		{"tag": "【webpack3】", "title": "【webpack3】入门", "path": "./blogs/2018-01-01/webpack-quickstart.js"},
 		{"tag": "【mock】", "title": "【mock】如何在react中使用mock来模拟fetch请求的返回数据", "path": "./blogs/2018-01-10/mock-react.js"},
+		{"tag": "【java】", "title": "【java】JVM工作原理", "path": "./blogs/2018-06-01/jvm lifecycle.js"},
 		{"tag": "【springboot】", "title": "【springboot】HelloWorld", "path": "./blogs/2018-07-07/springboot-helloworld.js"},
 		{"tag": "【springboot】", "title": "【springboot】全局配置文件", "path": "./blogs/2018-07-08/springboot-gloable configuration file.js"},
 		{"tag": "【springboot】", "title": "【springboot】配置类", "path": "./blogs/2018-07-09/springboot-configuration class.js"},
