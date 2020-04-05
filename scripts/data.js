@@ -82,6 +82,17 @@ function getAllBlogs(){
 		{"tag": "【微服务—分布式事务解决方案】", "title": "【微服务—分布式事务解决方案】基于消息的最终一致性方案", "path": "./blogs/2019-04-02/distribute transaction-mq.js"},
 		{"tag": "【微服务—分布式事务解决方案】", "title": "【微服务—分布式事务解决方案】基于网关及消息的最终一致性方案", "path": "./blogs/2019-04-03/distribute transaction-mq-apigateway.js"},
 		{"tag": "【graphql】", "title": "【graphql】概述", "path": "./blogs/2019-04-20/graphql-started.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】设计模式的三个分类", "path": "./blogs/2019-06-01/design pattern catalog.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】工厂方法模式和抽象工厂模式", "path": "./blogs/2019-06-01/factory.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】观察者模式", "path": "./blogs/2019-06-01/observer.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】单例模式", "path": "./blogs/2019-06-01/singleton.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】适配器模式", "path": "./blogs/2019-06-02/adapter.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】装饰模式", "path": "./blogs/2019-06-02/decorator.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】代理模式", "path": "./blogs/2019-06-02/proxy.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】策略模式", "path": "./blogs/2019-06-02/strategy.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】建造者模式", "path": "./blogs/2019-06-03/builder.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】委派模式", "path": "./blogs/2019-06-03/delegate.js"},
+		{"tag": "【设计模式】", "title": "【设计模式】模板方法模式", "path": "./blogs/2019-06-03/template.js"},
 		{"tag": "【prometheus】", "title": "【prometheus】Prometheus的alert产生过程和AlertManager告警处理流程", "path": "./blogs/2019-07-08/alertmanager-alert-period.js"},
 		{"tag": "【瞎几把想】", "title": "【瞎几把想】数据库表中同时存在id和code两个唯一字段的好处", "path": "./blogs/2019-07-26/code is useful.js"},
 		{"tag": "【Vitess】", "title": "【Vitess】在k8s中使用chart部署vitess", "path": "./blogs/2019-07-31/deploy vitess in k8s using chart.js"},
@@ -123,6 +134,7 @@ function getAllBlogs(){
 		{"tag": "【java】", "title": "【java】Java注解", "path": "./blogs/2020-02-28/java annotation.js"},
 		{"tag": "【spring】", "title": "【spring】使用Spring来加载工程下所有jar包下的指定资源", "path": "./blogs/2020-03-16/get all classpath resources.js"},
 		{"tag": "【java并发编程】", "title": "【java并发编程】Stream流", "path": "./blogs/2020-03-16/stream.js"},
-		{"tag": "【springboot】", "title": "【springboot】SpringBoot底层原理", "path": "./blogs/2020-03-30/springboot startup.js"}
+		{"tag": "【springboot】", "title": "【springboot】SpringBoot底层原理", "path": "./blogs/2020-03-30/springboot startup.js"},
+		{"tag": "【springboot】", "title": "【springboot】如何向 SpringBoot 中添加自定义的配置源", "path": "./blogs/2020-04-02/how to add propertysource in springboot.js"}
 	]
 }
