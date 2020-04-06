@@ -20,7 +20,7 @@ public boolean updateStockRaw(Long goodsId){
 顾名思义，就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会block直到它拿到锁。Java的synchronized关键字就属于悲观锁的一种实现，每次线程要修改数据时都先获得锁，保证同一时刻只有一个线程能操作数据，其他线程则会被block。
 
 #### MySQL隐式和显示锁定
-MySQL InnoDB支持行级锁，但MySQL的事务默认只会使用表级锁，除非通过特定的语句进行显示行级锁定：SELECT … FOR UPDATE
+MySQL InnoDB支持行级锁，可以通过特定的语句进行显示行级锁定：SELECT … FOR UPDATE
 
 ```java
 public boolean updateStock(Long goodsId){
