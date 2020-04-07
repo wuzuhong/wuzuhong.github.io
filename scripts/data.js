@@ -83,6 +83,7 @@ function getAllBlogs(){
 		{"tag": "【微服务—分布式事务解决方案】", "title": "【微服务—分布式事务解决方案】TCC方案", "path": "./blogs/2019-04-01/distribute transaction2 tcc.js"},
 		{"tag": "【微服务—分布式事务解决方案】", "title": "【微服务—分布式事务解决方案】基于消息的最终一致性方案", "path": "./blogs/2019-04-02/distribute transaction-mq.js"},
 		{"tag": "【微服务—分布式事务解决方案】", "title": "【微服务—分布式事务解决方案】基于网关及消息的最终一致性方案", "path": "./blogs/2019-04-03/distribute transaction-mq-apigateway.js"},
+		{"tag": "【微服务—分布式事务解决方案】", "title": "【微服务—分布式事务解决方案】Seata中的AT模式", "path": "./blogs/2019-04-04/seata at.js"},
 		{"tag": "【graphql】", "title": "【graphql】概述", "path": "./blogs/2019-04-20/graphql-started.js"},
 		{"tag": "【设计模式】", "title": "【设计模式】设计模式的三个分类", "path": "./blogs/2019-06-01/design pattern catalog.js"},
 		{"tag": "【设计模式】", "title": "【设计模式】工厂方法模式和抽象工厂模式", "path": "./blogs/2019-06-01/factory.js"},
