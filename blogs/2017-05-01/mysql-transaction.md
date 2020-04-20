@@ -29,3 +29,5 @@
 而在Oracle数据库中，只支持Serializable (串行化)级别和Read committed (读已提交)这两种级别，其中默认的为Read committed级别。
 
 Spring框架中也实现了以上四种事务隔离级别。此外其还提供了DEFAULT级别，用于表示使用数据库本身使用的隔离级别。Spring建议使用DEFAULT，就是数据库本身的隔离级别，配置好数据库本身的隔离级别，无论在哪个框架中读写数据都不用操心了，而且万一Spring没有把这几种隔离级别实现的很完善，出了问题就麻烦了。
+
+Spring中通过`@Transactional(rollbackFor=Exception.class)`注解来开启事务（不支持静态方法），通过`TransactionAspectSupport.currentTransactionStatus().setRollbackOnly()`来手动回滚事务。
