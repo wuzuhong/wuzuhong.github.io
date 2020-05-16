@@ -4,7 +4,7 @@ import re
 import json
 
 '''
-将blogs目录下所有md文件中的标题进行解析，注意blogs目录下只允许有且仅有一级目录
+将blogs目录下所有md文件中的标题进行解析，注意blogs目录下只允许有且仅有一级目录。
 主要解析出文章标题（title）、文章分类（tag）、对应的html文件路径（path）。
 然后将解析出来的数据写入到scripts/data.js文件中。
 每次执行当前脚本都会覆盖scripts/data.js文件中的所有内容。
