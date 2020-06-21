@@ -129,6 +129,7 @@ function getAllBlogs(){
 		{"tag": "【kubernetes】", "title": "【kubernetes】service资源", "path": "./blogs/2018-12-01/kubernetes-service resource.js"},
 		{"tag": "【springboot】", "title": "【springboot】拦截器", "path": "./blogs/2018-07-16/springboot-interceptor.js"},
 		{"tag": "【kubernetes】", "title": "【kubernetes】helm", "path": "./blogs/2018-12-13/kubernetes-helm.js"},
+		{"tag": "【web安全—xss攻击与防御】", "title": "【web安全—xss攻击与防御】通过java后端代码来防御xss攻击", "path": "./blogs/2020-06-03/xss attacks and defenses.js"},
 		{"tag": "【kubernetes】", "title": "【kubernetes】权限认证", "path": "./blogs/2018-12-07/kubernetes-authorization.js"},
 		{"tag": "【分布式配置中心—Apollo】", "title": "【分布式配置中心—Apollo】基于 java 的分布式配置中心对比", "path": "./blogs/2019-11-17/distributed configuration center compare.js"},
 		{"tag": "【分布式配置中心—Apollo】", "title": "【分布式配置中心—Apollo】是否需要刷新在应用启动时所用到的配置", "path": "./blogs/2019-11-17/if need refresh configuration witch used in startup.js"},
