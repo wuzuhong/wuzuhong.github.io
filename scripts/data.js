@@ -45,6 +45,7 @@ function getAllBlogs(){
 		{"tag": "【springboot】", "title": "【springboot】任务", "path": "./blogs/2018-07-15/springboot-task.js"},
 		{"tag": "【Vitess】", "title": "【Vitess】vitess相关操作的详细说明", "path": "./blogs/2019-08-13/detail operation in vitess.js"},
 		{"tag": "【区块链—Hyperledger Fabric】", "title": "【区块链—Hyperledger Fabric】部署过程", "path": "./blogs/2020-06-07/install.js"},
+		{"tag": "【spring】", "title": "【spring】在 Spring 中使用事务注解 @Transactional 是否会生效的问题", "path": "./blogs/2020-06-18/Transactional In Spring.js"},
 		{"tag": "【java并发编程】", "title": "【java并发编程】Reactor响应式编程", "path": "./blogs/2019-11-15/reactor.js"},
 		{"tag": "【微服务—kong】", "title": "【微服务—kong】负载均衡及健康检查", "path": "./blogs/2019-01-04/kong-loadbalance and healthcheck.js"},
 		{"tag": "【消息中间件—rabbitmq】", "title": "【消息中间件—rabbitmq】发布和订阅", "path": "./blogs/2019-03-01/rabbitmq-3publish-subscribe.js"},
