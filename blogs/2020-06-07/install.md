@@ -62,12 +62,10 @@ mv go /usr/local/
 ```s
 # 编辑文件
 vi /etc/profile
-
 # 向文件中末尾添加以下内容
 export GOROOT=/usr/local/go
 export GOPATH=/usr/local/gopath
 PATH=$PATH:$GOROOT/bin
-
 # 使用文件编辑生效
 source /etc/profile
 ```
