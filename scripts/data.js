@@ -142,6 +142,7 @@ function getAllBlogs(){
 		{"tag": "【web安全—xss攻击与防御】", "title": "【web安全—xss攻击与防御】通过java后端代码来防御xss攻击", "path": "./blogs/2020-06-03/xss attacks and defenses.js"},
 		{"tag": "【区块链—Hyperledger Fabric】", "title": "【区块链—Hyperledger Fabric】部署过程", "path": "./blogs/2020-06-07/install.js"},
 		{"tag": "【spring】", "title": "【spring】在 Spring 中使用事务注解 @Transactional 是否会生效的问题", "path": "./blogs/2020-06-18/Transactional In Spring.js"},
-		{"tag": "【springboot】", "title": "【springboot】SpringBoot中的各类监听器", "path": "./blogs/2021-04-12/Listeners In SpringBoot.js"}
+		{"tag": "【springboot】", "title": "【springboot】SpringBoot中的各类监听器", "path": "./blogs/2021-04-12/Listeners In SpringBoot.js"},
+		{"tag": "【java】", "title": "【java】Java泛型", "path": "./blogs/2021-04-22/generic-types.js"}
 	]
 }
