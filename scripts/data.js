@@ -144,6 +144,7 @@ function getAllBlogs(){
 		{"tag": "【spring】", "title": "【spring】在 Spring 中使用事务注解 @Transactional 是否会生效的问题", "path": "./blogs/2020-06-18/Transactional In Spring.js"},
 		{"tag": "【springboot】", "title": "【springboot】SpringBoot中的各类监听器", "path": "./blogs/2021-04-12/Listeners In SpringBoot.js"},
 		{"tag": "【java】", "title": "【java】Java泛型", "path": "./blogs/2021-04-22/generic-types.js"},
-		{"tag": "【java】", "title": "【java】== 和 equals 的区别", "path": "./blogs/2021-04-24/dengdeng and equals.js"}
+		{"tag": "【java】", "title": "【java】== 和 equals 的区别", "path": "./blogs/2021-04-24/dengdeng and equals.js"},
+		{"tag": "【java】", "title": "【java】hashCode 与 equals", "path": "./blogs/2021-04-24/hashCode and equals.js"}
 	]
 }
