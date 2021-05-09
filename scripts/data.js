@@ -147,6 +147,7 @@ function getAllBlogs(){
 		{"tag": "【java】", "title": "【java】== 和 equals 的区别", "path": "./blogs/2021-04-24/dengdeng and equals.js"},
 		{"tag": "【java】", "title": "【java】hashCode 与 equals", "path": "./blogs/2021-04-24/hashCode and equals.js"},
 		{"tag": "【java】", "title": "【java】重载和重写的区别", "path": "./blogs/2021-05-09/overwrite and overload.js"},
+		{"tag": "【java】", "title": "【java】Java中创建对象的方式", "path": "./blogs/2021-05-09/the ways to new object.js"},
 		{"tag": "【java】", "title": "【java】Java中只有值传递", "path": "./blogs/2021-05-09/value deliverty in java.js"}
 	]
 }
