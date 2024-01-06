@@ -1,0 +1,19 @@
+# 【微服务—kong】反向代理
+## 端口暴露
+kong暴露了四个端口
+* 8000 ，代理端口，所有通过这个端口访问kong的请求都会被反向代理至具体的后端服务器
+* 8001 ，管理端口，用于对kong进行管理和配置，其中kong核心对象的增删改查就是通过这个端口来调用的
+* 8003 ，https协议下的8000端口
+* 8004 ，https协议下的8001端口
+
+## kong如何匹配route
+route里面会有hosts、paths和methods三个字段，kong就是通过匹配这三个字段来唯一匹配一个route，其中paths支持正则匹配，因此route中的hosts、paths和methods三个字段至少要指定一个。
+* hosts ：匹配当前请求的域名，数组类型，匹配到了一个即表示匹配成功，可以使用 * 来作为通配符
+* paths ：匹配当前请求的路径，数组类型，匹配到了一个即表示匹配成功，支持正则匹配
+* methos ：匹配当前请求的方法，数组类型，匹配到了一个即表示匹配成功
+
+## route匹配成功后的操作
+若成功匹配了一个route，那么就会根据route中的service_id去找到对应的service，然后根据service的host去找到对应的upstream（service的host对应upstream的name），随后就会根据内置的负载均衡器算法得到一个upstream的target，也就是具体的后端ip，最后请求就会被代理到这个ip的服务器上。
+route中还有有strip_path、preserve_host两个字段
+* strip_path ：如果为true，则表示请求在被代理到后端服务器上的时候会将请求的路径去掉，反之
+* preserve_host ：如果为false，则表示请求在被代理到后端服务器上的时候会将kong的ip来代替请求的域名，反之

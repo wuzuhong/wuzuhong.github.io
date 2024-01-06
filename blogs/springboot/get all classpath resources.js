@@ -1,0 +1,3 @@
+function getBlog(){
+	return blog = {"content": "# 【springboot】使用Spring来加载工程下所有jar包下的指定资源\n一个工程可能会依赖多个jar，jar里面又可能以来多个子jar，这些jar下可能存在相同的文件，如果我们想获取出所有的这些文件，可以使用`PathMatchingResourcePatternResolver`对象来实现。这里会涉及到两个概念：\n* classpath：只会到自己工程的class路径中查找找文件\n* classpath*：不仅包含class路径，还包括jar文件中的class路径进行查找\n#### 依赖\n```xml\n<dependency>\n  <groupId>org.springframework</groupId>\n  <artifactId>spring-core</artifactId>\n  <version>5.0.7.RELEASE</version>\n</dependency>\n```\n#### 示例\n```java\nPathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();\n// 注意这里的classpath*，其代表：不仅包含class路径，还包括jar文件中的class路径进行查找\nResource[] resources = resolver.getResources(\"classpath*:aa.properties\");\n```\n", "title": "【springboot】使用Spring来加载工程下所有jar包下的指定资源"}
+}

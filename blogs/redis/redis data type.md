@@ -1,0 +1,87 @@
+# 【Redis-5.0】简介及其数据类型
+## 简介
+Redis 是一个内存数据库，也支持将数据持久化到磁盘。它的数据模型为 key-value ，但是很多不同类型的值都支持： Strings, Lists, Sets, Sorted Sets, Hashes, Streams, HyperLogLogs, Bitmaps 。总之，Redis 是基于内存的 key-value 的非关系型数据库。
+
+## 数据类型
+### 字符串（Strings）
+字符串是一种最基本的 Redis 值类型。 Redis 字符串是二进制安全的，这就意味着一个Redis字符串能包含任意类型的数据，例如： 一张JPEG格式的图片或者一个序列化的 Java 对象。一个字符串类型的值最多能存储 512M 字节的内容。
+
+### 列表（Lists）
+Redis 列表是简单的字符串列表，按照插入顺序排序。可以添加一个元素到列表的头部（左边）或者尾部（右边）。一个列表最多可以包含 4294967295 个元素（约为 40 亿个元素）。
+
+### 集合（Sets）
+Redis 集合是一个无序的字符串合集。你可以以 O(1) 的时间复杂度（无论集合中有多少元素时间复杂度都为常量）完成添加，删除以及测试元素是否存在的操作。Redis 集合有着不允许相同成员存在的优秀特性。向集合中多次添加同一元素，在集合中最终只会存在一个此元素。实际上这就意味着，在添加元素前，你并不需要事先进行检验此元素是否已经存在的操作。一个集合最多可以包含 4294967295 个元素（约为 40 亿个元素）。
+
+### 哈希（Hashes）
+Redis 哈希是字段和值之间的映射，也就是说它的值是key-value形式的，所以它们是完美的表示对象的数据类型。在jedis中它的值使用Map来传递的，而不是自定义的java对象。
+
+### 有序集合（Sorted sets）
+Redis Sorted sets 和 Redis Sets 类似，是不包含相同字符串的合集。它们的差别是，每个 Sorted sets 的成员都关联着一个评分，这个评分用于把 Sorted sets 中的成员按最低分到最高分排列。使用 Sorted sets ，可以非常快地（O(log(N))）完成添加，删除和更新元素的操作。因为元素是在插入时就排好序的，所以很快地通过评分(score)或者位次(position)获得一个范围的元素。访问 Sorted sets 的中间元素同样也是非常快的，因此你可以使用有序集合作为一个没有重复成员的智能列表。在这个列表中，你可以轻易地访问任何你需要的东西：有序的元素，快速的存在性测试，快速访问集合中间元素。
+
+### 流（Stream）
+从字面上看是流类型，但其实从功能上看，是 Redis 对消息队列的完善实现，其几乎实现了消息队列的全部细节。
+
+#### 生产者写入消息
+语法：XADD key [MAXLEN len] ID field string [field string ...]
+示例：XADD mystream * name Sara surname OConnor
+* key是Stream的唯一标识，相当于消息频道channel，如果key不存在，则会自动创建一个新的Stream，如果key存在，则会在原来的基础上添加消息
+* 可以使用MAXLEN选项来限制流中的最大元素数量：`XADD mystream MAXLEN 100 * name Sara surname OConnor`
+* 每一条消息需要一个唯一的Id，*号表示服务器自动生成ID。消息ID的形式是timestampInMillis-sequence，例如1527846880572-5，它表示当前的消息在毫秒时间戳1527846880572时产生，并且是该毫秒内产生的第5条消息。消息ID可以由服务器自动生成，也可以由客户端自己指定，但是形式必须是整数-整数，而且必须是后面加入的消息的ID要大于前面的消息ID
+* 消息ID后面顺序跟着一组或者多组消息元素，消息元素的的结构为key-value，必须成对出现，如果key或者value元素中有空格，必须用双引号或单引号括起来，例如"abc  def"或者'abc  def'。这些消息元素就相当于消息体
+
+#### 消费者独立消费
+语法：XREAD [COUNT count] [BLOCK milliseconds] STREAMS key [key ...] ID [ID ...]
+示例：XREAD COUNT 2 BLOCK 5000 STREAMS mystream writers 0-0 0-0
+* 类似于List，生产者往list中写数据，消费者从list中读数据，只能有一个消费者
+* 从头部读取消息，从某个streams中读取n条消息，0-0只从头开始：`xread count 1 streams "NBA_Match_001" 0-0`。或者指定从streams的Id开始：`xread count 1 streams "NBA_Match_001" 1562980142175-0`
+* 从尾部读取最新的一条消息：`xread count 1 streams "NBA_Match_001" $`，此时默认不返回任何消息。以阻塞的方式读取尾部最新的一条消息，直到新的消息的到来：`xread  block 0 count 1 streams "NBA_Match_001" $`
+
+#### 多消费者，即消费组，组中的每个消费者独立消费stream中的消息
+* 典型的比如文字直播的安卓App客户端，苹果App客户端，网页客户端等等。多个终端，都可以独立地消费队列里面的消息
+* 创建消费组。对消息队列"NBA_Match_001"创建了两个消费组，一个是cg1，一个是cg2，比如网页客户端与App客户端。创建消费组cg1：`xgroup create "NBA_Match_001" cg1 0-0`，消费组绑定一个stream（NBA_Match_001），从头（0-0 ）开始消费"NBA_Match_001"中的消息。创建消费组cg2：`xgroup create "NBA_Match_001" cg2 0-0`
+* 从消费组中创建消费者：`xreadgroup GROUP cg1 c1 count 1 streams "NBA_Match_001" >`，>号表示从当前消费组的last_delivered_id后面开始读，每当消费者读取一条消息，last_delivered_id变量就会前进，用于表示未被组内消费的起始消息
+* 当一个组的消费者消费完全部消息之后，就没有新的消息了
+* 每个消费组的状态都是独立的，相互不受影响。也就是说同一份Stream内部的消息会被每个消费组都消费到
+* 同一个消费组可以挂接多个消费者，这些消费者之间是竞争关系，任意一个消费者读取了消息都会使游标last_delivered_id往前移动，也就是说同一个消费组下的多个消费者所消费的消息是不一样的，这些消费者所消费的消息合起来才是这个消费组下的所有消息，**这可用于解决多副本部署时的问题**
+* 每个消费者都有一个组内唯一名称
+
+关于消费组，可能不太好理解，举个例子就比较清楚。假设有2个消费组cg1，cg2，对于cg1，其组内共有3个消费者c1,、c2、c3。一个消息队列中共有5条消息a,b,c,d,e，那么一种可能的消费方式如下：
+```
+a -> c1
+b -> c2
+c -> c3
+d -> c1
+e -> c2
+```
+也就是说3个消费者，对于消息的消费是互斥的，消费的消息是没有交集的，**这可用于解决多副本部署时的问题**。而对于cg2，同样可以消费a,b,c,d,e这5条消息，不依赖于cg1消费组以及消费情况，同理，具体怎么消费，取决于其组内的消费者数量，就好比体育直播的客户端，正常情况下，网页客户端可以收到所有的直播消息，手机App客户端也可以收到所有的直播消息一样，不同消费组间对消息的消费互不干扰。
+
+#### 查看消息队列当前的长度
+语法：XLEN key
+示例：XLEN mystream
+
+#### 查询消息
+查询是生产者查询自己生产的消息，跟消费者的消费是两码事
+* 正向查询
+    ```
+    xrange "NBA_Match_001" 　　　　　　 　　　　　　  # 查询所有消息
+    xrange "NBA_Match_001" - + 　　　　　　　　　　  # -表示最小值, +表示最大值
+    xrange "NBA_Match_001" 1562980142175-0 +　　　  # 指定最小消息ID的列表
+    xrange "NBA_Match_001"- 1562980142175-0 　　　  # 指定最大消息ID的列表
+    ```
+* 反向查询
+    ```
+    xrevrange "NBA_Match_001"
+    xrevrange "NBA_Match_001" + -
+    xrevrange "NBA_Match_001" + 1562980142175-0
+    xrevrange "NBA_Match_001" 1562980142175-0 -
+    ```
+
+#### 删除消息
+语法：XDEL key ID [ID ...]
+示例：XDEL mystream 1538561700640-0
+* 删除消息并不是真正的物理删除，队列的长度不变，只是标记当前消息被删除
+
+#### 删除Stream
+语法：DEL key [key ...]
+示例：DEL NBA_Match_001
+* 删除Stream本质上和Redis中的其他数据类型一致，stream本身就是一个key值，DEL key值就删除了整个消息队列的全部信息
