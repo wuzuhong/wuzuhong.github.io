@@ -1,4 +1,4 @@
-# 【搜索引擎-SkyWalking】基本概念
+# 【SkyWalking】基本概念
 SkyWalking 是一个开源的可观测平台，用于从服务和云原生基础设施收集、分析、聚合及可视化数据。SkyWalking 也是一个现代化的应用程序性能监控（Application Performance Monitoring，APM）系统。
 
 ## 基本概念

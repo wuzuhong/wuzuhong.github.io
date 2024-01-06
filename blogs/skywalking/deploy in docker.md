@@ -1,4 +1,4 @@
-# 【搜索引擎-SkyWalking】使用 Docker 来部署
+# 【SkyWalking】使用 Docker 来部署
 
 ## 部署服务端
 * 镜像版本：`apache/skywalking-oap-server:9.2.0`
