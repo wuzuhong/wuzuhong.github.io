@@ -1,0 +1,3 @@
+function getBlog(){
+	return blog = {"content": "# 【搜索引擎-Elasticsearch】使用 Docker 来部署\n* 镜像版本：`elasticsearch:7.17.12`\n* 环境变量：\n```properties\n# 开启用户认证\nxpack.security.enabled=true\n# 关闭geoip自动更新\ningest.geoip.downloader.enabled=false\n# 单节点模式\ndiscovery.type=single-node\n```\n* 暴露端口：`9200`（与外部通讯的端口，HTTP协议）和`9300`（节点之间通讯的端口，TCP协议）\n* 挂载目录：`/usr/share/elasticsearch/data`\n* 设置内置用户初始密码（挂载目录后，应用重启不再需要再次执行）：\n```sh\n# 进入容器\ndocker exec -it elasticsearch /bin/sh\n# 执行设置内置用户初始密码\nbin/elasticsearch-setup-passwords interactive\n```\n", "title": "【搜索引擎-Elasticsearch】使用 Docker 来部署"}
+}

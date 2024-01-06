@@ -1,0 +1,3 @@
+function getBlog(){
+	return blog = {"content": "# 【搜索引擎-SkyWalking】使用 Docker 来部署\n\n## 部署服务端\n* 镜像版本：`apache/skywalking-oap-server:9.2.0`\n* 环境变量：\n```properties\n# 使用 ElasticSearch 来存储数据\nSW_STORAGE=elasticsearch\n# ElasticSearch 的访问地址\nSW_STORAGE_ES_CLUSTER_NODES=127.0.0.1:9200\n```\n* 暴露端口：`11800`（gRPC）和`12800`（HTTP）\n\n注意：以上使用的 ElasticSearch 的版本号为 7.x。\n\n## 部署UI前端\n* 镜像版本：`apache/skywalking-ui:9.2.0`\n* 环境变量：\n```properties\n# 服务端地址\nSW_OAP_ADDRESS=http://127.0.0.1:12800\n```\n* 暴露端口：`8080`\n\n可以通过`http://127.0.0.1:8080`访问UI前端。", "title": "【搜索引擎-SkyWalking】使用 Docker 来部署"}
+}

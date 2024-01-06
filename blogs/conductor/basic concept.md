@@ -1,0 +1,61 @@
+# 【服务编排-Conductor】基本概念
+
+主要包含 Workflow 、 Tasks 和 Workers。
+
+## Workflow
+它是对业务逻辑的描述。在定义 Workflow 的时候会用到一系列的 Task，并且会指定 Task 的执行顺序，而且还会通过使用 Task 中的输入输出参数来指定 Task 之间的数据流转，还会包含运行时的元数据，例如整个 Workflow 在启动时的输入和输出参数以及 Workflow 的超时和重试设置。
+
+Workflow 是分版本的，版本号是整型数字，可以同时运行相同 Workflow 的不同版本。
+
+在启动 Workflow 之后就会产生一个执行实例，每个执行实例都有唯一的 ID ， Workflow 与执行实例之间是一对多的关系。
+## Tasks
+它是构建 Workflow 的基本单元，每个 Workflow 定义中都必须至少包含一个 Task ，包括以下 3 中类型：
+* System Tasks ： 通用的和可复用的内置任务，在 Conductor 服务端内部运行，并由 Conductor 管理以实现执行和可伸缩性。
+* Simple Tasks 或 Worker Tasks ： 在自己的应用程序中实现的可复用任务，并在独立于 Conductor 的环境中运行，并通过 REST/gRPC 与 Conductor 服务端通信，轮询任务并在执行后更新任务的状态。
+* Operators ： 能够控制 Workflow 的 Task 执行方向，类似于编程结构，比如for循环、switch 代码块等等。
+
+已经执行成功的 Task 会将输出参数作为当前 Task 的输入参数传递过来，而当前 Task 的配置描述的就是 Workflow 该如何处理这些输入参数：
+* 对于所有类型的 Task ， Task 的配置将会指定哪些输入参数会被当前 Task 使用。
+* 对于 Simple Tasks 或 Worker Tasks ， Task 的配置将会包含一个已经注册的 worker 的 taskName 的引用。
+* 对于 System Tasks 和 Operators， Task 的配置将会包括一些控制 Task 行为的重要参数，例如，一个 HTTP task 将会包括在发起 HTTP 请求时所需要的请求路径和请求体。
+
+Task 的定义是对默认的 Task 级别参数的定义，比如 Task 的输入和输出参数以及超时和重试设置：
+* 所有的 Simple Tasks 在被 Workflow 使用之前都需要注册。
+* Task 的定义可以通过UI界面或者调接口来注册。
+* 已经注册的 Task 的定义可以被不同的 Workflow 引用。
+
+在 Task 执行的时候将会产生一个执行实例，每个执行实例都有唯一的 ID 以及执行的结果，还包括了和当前 Task 相关的执行状态、输入输出参数以及变量。
+
+Task 的生命周期包括：
+1. 已调度
+2. 执行中
+3. 执行成功
+4. 执行失败
+5. 取消
+
+Task 的超时配置包括：
+* pollTimeoutSeconds ： Task 被 worker 接收的超时时间。能够检测出 Task 队列没有足够的 worker 的情况。
+* responseTimeoutSeconds ： 从 Task 已被 worker 接收，到 worker 处理完成返回响应的超时时间。
+* timeoutSeconds ： 从 Task 第一次轮询开始，到 worker 处理完成的超时时间。这个超时时间必须要比 responseTimeoutSeconds 大。
+
+## Workers
+它是负责执行 Task 的，可以用任何语言实现并且是可复用的， Conductor 提供了一组多语言的 Worker 框架，这些框架提供了诸如轮询线程、指标和服务通信等功能，使得创建 Worker 变得更简单。
+
+每个 Worker 都使用了微服务设计模式，并遵循一定的基本原则：
+* Worker 是无状态的，并且不会实现 Workflow 的特定逻辑。
+* 每个 Worker 都是执行特定的任务，并在给定的输入参数下产生良好的输出参数。
+* Worker 应该是幂等的，应该处理那些由于超时等原因而被重新调度的情况。
+* Worker 不实现重试等逻辑，这是由 Conductor 服务端负责的。
+
+Worker 是通过 HTTP 与 Conductor 服务端通信的独立进程。
+
+## 错误处理
+在定义主 Workflow 的时候可以配置当错误出现时运行的 Workflow：
+```
+"failureWorkflow": "<name of your failure workflow",
+```
+
+当在主 Workflow 出现错误时， Conductor 将会启动 failureWorkflow 并且在默认配置下会传入以下参数：
+* reason ： 错误原因
+* workflowId ： 主 Workflow 的 ID
+* failureStatus ： 错误状态
