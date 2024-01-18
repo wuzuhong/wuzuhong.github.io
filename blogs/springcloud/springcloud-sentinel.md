@@ -151,7 +151,7 @@ spring.cloud.sentinel.datasource.ds2.nacos.password=demo
 ```
 
 #### 在pom.xml文件中添加以下依赖
-[在pom.xml文件中添加以下依赖](####在pom.xml文件中添加以下依赖)
+依赖与上述Sentinel限流中添加的依赖一致。
 
 #### 在 Nacos 控制台创建熔断降级规则
 创建配置，其中该配置的`Data ID`为`spring.cloud.sentinel.datasource.ds1.nacos.data-id`配置项的值。其中该配置的`配置格式`为`spring.cloud.sentinel.datasource.ds1.nacos.data-type`配置项的值。配置内容为：

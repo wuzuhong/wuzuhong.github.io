@@ -71,6 +71,7 @@ NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123
 ```
 
 #### 启动命令
+```bash
 docker run -d --name nacos-server \
 -p 8848:8848 \
 -p 9848:9848 \
@@ -80,6 +81,7 @@ docker run -d --name nacos-server \
 -e NACOS_AUTH_IDENTITY_VALUE=security \
 -e NACOS_AUTH_TOKEN=SecretKey012345678901234567890123456789012345678901234567890123456789 \
 nacos/nacos-server:v2.3.0-slim
+```
 
 #### 访问控制台
 * 访问地址： http://localhost:8848/nacos
