@@ -1,0 +1,13 @@
+# 【mysql】锁类型
+
+## 锁类型
+mysql 的锁类型包括：
+1. 锁表： update语句如果其 where 条件用到了索引，那么是锁行；如果没有用到索引，那么 update 语句就是锁表。开销小，加锁快。
+2. 锁行： insert 和 delete 语句是锁行。开销大，加锁慢。
+
+## 锁等待超时场景
+假设有一张 demo 表，其中有一个 type 字段。在同一个事务中，第一次更新，先将所有 type 字段为 aa 的记录的 type 字段设置为 null，第二次更新，再将某些 id 的记录的 type 字段设置为 bb 。因为 type 字段没有索引，而 id 有索引，所以第一次更新的时候是锁表，第二次更新是锁行，在并发场景下就会出现锁等待超时的情况。
+
+mysql 默认锁等待超时时间为 50 秒。
+
+可以通过`select * from information_schema.innodb_trx`来查看锁定的 SQL 。
