@@ -29,6 +29,7 @@ function getAllBlogs(){
 		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】简介及其数据类型", "path": "./blogs/redis/redis data type.js"},
 		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】高可用", "path": "./blogs/redis/redis high avaliability.js"},
 		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】分布式锁", "path": "./blogs/redis/redis distributed lock.js"},
+		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】缓存穿透、雪崩、击穿", "path": "./blogs/redis/redis cache problem.js"},
 		{"tag": "【Redis-5.0】", "title": "【Redis-5.0】发布/订阅", "path": "./blogs/redis/redis publish and subscript.js"},
 		{"tag": "【web安全】", "title": "【web安全】xss攻击与防御", "path": "./blogs/websecure/xss attacks and defenses.js"},
 		{"tag": "【微服务—分布式事务解决方案】", "title": "【微服务—分布式事务解决方案】Seata中的AT模式", "path": "./blogs/distributed-transaction/seata at.js"},
