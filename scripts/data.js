@@ -125,6 +125,7 @@ function getAllBlogs(){
 		{"tag": "【搜索引擎-Elasticsearch】", "title": "【搜索引擎-Elasticsearch】使用 Docker 来部署", "path": "./blogs/elasticsearch/deploy in docker.js"},
 		{"tag": "【搜索引擎-Elasticsearch】", "title": "【搜索引擎-Elasticsearch】集群机制", "path": "./blogs/elasticsearch/cluster mechanism.js"},
 		{"tag": "【搜索引擎-Elasticsearch】", "title": "【搜索引擎-Elasticsearch】分词", "path": "./blogs/elasticsearch/text analyze.js"},
+		{"tag": "【消息中间件-RocketMQ】", "title": "【消息中间件-RocketMQ】消息积压", "path": "./blogs/rocketmq/rocketmq-message-backlog.js"},
 		{"tag": "【消息中间件-RocketMQ】", "title": "【消息中间件-RocketMQ】消费者", "path": "./blogs/rocketmq/rocketmq-consumer.js"},
 		{"tag": "【消息中间件-RocketMQ】", "title": "【消息中间件-RocketMQ】基本概念", "path": "./blogs/rocketmq/rocketmq-basic.js"},
 		{"tag": "【消息中间件-RocketMQ】", "title": "【消息中间件-RocketMQ】生产者", "path": "./blogs/rocketmq/rocketmq-producer.js"},
