@@ -56,6 +56,7 @@ function getAllBlogs(){
 		{"tag": "【微服务—kong】", "title": "【微服务—kong】kong集群", "path": "./blogs/kong/kong-cluster.js"},
 		{"tag": "【微服务—kong】", "title": "【微服务—kong】kong是什么", "path": "./blogs/kong/kong-what is kong.js"},
 		{"tag": "【微服务—kong】", "title": "【微服务—kong】在使用kong时遇到的问题", "path": "./blogs/kong/kong-bugfix.js"},
+		{"tag": "【jvm详解】", "title": "【jvm详解】使用 Arthas 分析线上问题", "path": "./blogs/jvm/jvm online problem analyse with arthas.js"},
 		{"tag": "【jvm详解】", "title": "【jvm详解】内存溢出问题排查过程", "path": "./blogs/jvm/jvm oom.js"},
 		{"tag": "【jvm详解】", "title": "【jvm详解】基本原理", "path": "./blogs/jvm/jvm lifecycle.js"},
 		{"tag": "【jvm详解】", "title": "【jvm详解】执行引擎", "path": "./blogs/jvm/jvm excution engine.js"},
