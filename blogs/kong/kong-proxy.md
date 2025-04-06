@@ -3,8 +3,8 @@
 kong暴露了四个端口
 * 8000 ，代理端口，所有通过这个端口访问kong的请求都会被反向代理至具体的后端服务器
 * 8001 ，管理端口，用于对kong进行管理和配置，其中kong核心对象的增删改查就是通过这个端口来调用的
-* 8003 ，https协议下的8000端口
-* 8004 ，https协议下的8001端口
+* 8443 ，https协议下的8000端口
+* 8444 ，https协议下的8001端口
 
 ## kong如何匹配route
 route里面会有hosts、paths和methods三个字段，kong就是通过匹配这三个字段来唯一匹配一个route，其中paths支持正则匹配，因此route中的hosts、paths和methods三个字段至少要指定一个。
