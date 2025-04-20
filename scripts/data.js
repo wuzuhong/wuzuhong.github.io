@@ -108,6 +108,7 @@ function getAllBlogs(){
 		{"tag": "【mysql】", "title": "【mysql】EXPLAIN命令", "path": "./blogs/mysql/mysql-explain.js"},
 		{"tag": "【mysql】", "title": "【mysql】常用sql语句", "path": "./blogs/mysql/mysql-sql.js"},
 		{"tag": "【mysql】", "title": "【mysql】触发器", "path": "./blogs/mysql/mysql-trigger.js"},
+		{"tag": "【mysql】", "title": "【mysql】SQL调优", "path": "./blogs/mysql/mysql-sql-optimize.js"},
 		{"tag": "【mysql】", "title": "【mysql】通过递归来实现树查询", "path": "./blogs/mysql/mysql-tree-query.js"},
 		{"tag": "【流程引擎-Flowable】", "title": "【流程引擎-Flowable】Flowable使用示例", "path": "./blogs/flowable/Flowable Demo.js"},
 		{"tag": "【prometheus】", "title": "【prometheus】Prometheus的alert产生过程和AlertManager告警处理流程", "path": "./blogs/prometheus/alertmanager-alert-period.js"},

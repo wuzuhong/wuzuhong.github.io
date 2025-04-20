@@ -1,0 +1,3 @@
+function getBlog(){
+	return blog = {"content": "# 【mysql】SQL调优\n#### 避免使用select *\nselect * 会查出所有列的数据，有些列是不需要的，这就会浪费数据库内存和CPU、增加网络IO时长。\n\n#### 用union all代替union\nunion会去重，而union all不会，所以union all性能高。\n\n#### 使用limit限制数据量\n假设已经知道某个查询语句的结果数据量，比如数据量为6行。如果不加limit 6，那么在查询到6行数据之后，还是会继续检索表，浪费资源和时间。\n\n#### 使用连接查询代替子查询\n子查询会创建临时表，并且在查询完毕后还需要删除这些临时表，这会有性能消耗。\n\n#### 使用EXISTS代替IN\n因为EXISTS一旦找到匹配的记录就会停止子查询。\n\n#### 避免索引失效\n避免[索引失效的场景](./mysql-index.md/##索引失效的场景)", "title": "【mysql】SQL调优"}
+}
