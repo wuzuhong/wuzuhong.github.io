@@ -1,0 +1,3 @@
+function getBlog(){
+	return blog = {"content": "# 【mysql】EXPLAIN命令\nEXPLAIN命令是用来获取查询语句的执行计划，从而知道MySQL是如何处理查询语句，分析查询语句性能瓶颈。使用示例如下：\n```sql\nexplain select demo_key from demo_table;\n```\n以上示例执行结果包括多个列，其中type列较为重要，type列的值包括（按性能由高到低排序）：\n* system：表仅存在一行记录，这是一种很特殊的情况，可以忽略。\n* const：查询条件是主键或者唯一索引。\n* eq_ref：唯一性索引扫描，表中只有一条记录与之匹配。\n* ref：非唯一性索引扫描，返回匹配某个单独值的所有行。\n* range：范围检索，开始于索引的某一点，而结束于另一点，不用扫描全部索引。\n* index：全表扫描（从索引树读取）。\n* all：全表扫描（从磁盘中读取）。", "title": "【mysql】EXPLAIN命令"}
+}

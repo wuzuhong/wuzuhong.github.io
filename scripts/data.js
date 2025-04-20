@@ -105,6 +105,7 @@ function getAllBlogs(){
 		{"tag": "【mysql】", "title": "【mysql】通过左右值编码来实现树查询", "path": "./blogs/mysql/mysql-tree-query2.js"},
 		{"tag": "【mysql】", "title": "【mysql】事务", "path": "./blogs/mysql/mysql-transaction.js"},
 		{"tag": "【mysql】", "title": "【mysql】根据json类型的列中的某一个key来查询", "path": "./blogs/mysql/mysql-json-query.js"},
+		{"tag": "【mysql】", "title": "【mysql】EXPLAIN命令", "path": "./blogs/mysql/mysql-explain.js"},
 		{"tag": "【mysql】", "title": "【mysql】常用sql语句", "path": "./blogs/mysql/mysql-sql.js"},
 		{"tag": "【mysql】", "title": "【mysql】触发器", "path": "./blogs/mysql/mysql-trigger.js"},
 		{"tag": "【mysql】", "title": "【mysql】通过递归来实现树查询", "path": "./blogs/mysql/mysql-tree-query.js"},
