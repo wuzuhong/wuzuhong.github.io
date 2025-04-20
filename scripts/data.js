@@ -107,6 +107,7 @@ function getAllBlogs(){
 		{"tag": "【mysql】", "title": "【mysql】根据json类型的列中的某一个key来查询", "path": "./blogs/mysql/mysql-json-query.js"},
 		{"tag": "【mysql】", "title": "【mysql】EXPLAIN命令", "path": "./blogs/mysql/mysql-explain.js"},
 		{"tag": "【mysql】", "title": "【mysql】常用sql语句", "path": "./blogs/mysql/mysql-sql.js"},
+		{"tag": "【mysql】", "title": "【mysql】雪花算法Snowflake", "path": "./blogs/mysql/mysql-snowflake.js"},
 		{"tag": "【mysql】", "title": "【mysql】触发器", "path": "./blogs/mysql/mysql-trigger.js"},
 		{"tag": "【mysql】", "title": "【mysql】SQL调优", "path": "./blogs/mysql/mysql-sql-optimize.js"},
 		{"tag": "【mysql】", "title": "【mysql】通过递归来实现树查询", "path": "./blogs/mysql/mysql-tree-query.js"},
