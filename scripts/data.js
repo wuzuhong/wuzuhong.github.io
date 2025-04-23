@@ -99,6 +99,7 @@ function getAllBlogs(){
 		{"tag": "【graphql】", "title": "【graphql】概述", "path": "./blogs/graphql/graphql-started.js"},
 		{"tag": "【mysql】", "title": "【mysql】锁类型", "path": "./blogs/mysql/mysql-lock-type.js"},
 		{"tag": "【mysql】", "title": "【mysql】索引", "path": "./blogs/mysql/mysql-index.js"},
+		{"tag": "【mysql】", "title": "【mysql】索引页分裂和合并", "path": "./blogs/mysql/mysql-page-split.js"},
 		{"tag": "【mysql】", "title": "【mysql】幂等性", "path": "./blogs/mysql/mysql-mi-deng-xing.js"},
 		{"tag": "【mysql】", "title": "【mysql】乐观锁和悲观锁", "path": "./blogs/mysql/mysql-pessimistic-lock-and-optimistic-lock.js"},
 		{"tag": "【mysql】", "title": "【mysql】函数与存储过程", "path": "./blogs/mysql/mysql-function-and-procedure.js"},
