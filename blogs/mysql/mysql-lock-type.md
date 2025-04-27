@@ -10,4 +10,4 @@ mysql 的锁类型包括：
 
 mysql 默认锁等待超时时间为 50 秒。
 
-可以通过`select * from information_schema.innodb_trx`来查看锁定的 SQL 。
+可以通过查询当前正在执行的事务`select * from information_schema.innodb_trx`来查看锁定的 SQL 。
